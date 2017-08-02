@@ -12,6 +12,11 @@
   "scripts": {
     "test": "mocha tests --recursive"
   },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "lib"
+  ],
   "dependencies": {
     "requireindex": "~1.1.0"
   },
