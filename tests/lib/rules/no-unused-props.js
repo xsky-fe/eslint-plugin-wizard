@@ -85,6 +85,37 @@ class ClientGroupFormContainer extends React.Component {
 export default connector(ClientGroupFormContainer);
       `
     },
+    {
+      code: `
+const MyComponent = props => (
+  <div>
+    {t(
+      '存储桶“%s”不允许被取消NFS共享，NFS网关上有客户端正在访问，需要手动退出以下客户端才可以被停止：',
+      { args: selectedResource[0].name },
+    )}
+    {filterMountNfsGatewayMaps[0].mountClients.split(',').map((mountClient, idx) => (
+      <p key={idx}><span className="icon icon-client"/>&nbsp;{mountClient}</p>
+    ))}
+  </div>
+)
+      `
+    },
+    {
+      code: `
+const connector = connect(
+  filterSelectors('ui', 'disf'),
+);
+
+function UsersBar(props) {
+  const selectedResource = getSelectedResource(props.ui, 'userTable');
+  return (
+    <p>
+      {props.disf.isGuest && <span>yes</span>}
+    </p>
+  )
+}
+      `
+    }
   ],
 
   invalid: [
