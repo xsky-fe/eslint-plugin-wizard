@@ -1,17 +1,16 @@
 # use t function to translate (use-t-function)
 
-Please describe the origin of the rule here.
-
+This rule will find all the string with chinese characters and check whether it was wrapped by the t function.
 
 ## Rule Details
 
-This rule aims to...
+This rule aims to ensure all the chinese contents were translated.
 
 Examples of **incorrect** code for this rule:
 
 ```js
 
-// fill me in
+<Col xs={6}>名称：{name}</Col>
 
 ```
 
@@ -19,18 +18,10 @@ Examples of **correct** code for this rule:
 
 ```js
 
-// fill me in
+<Col xs={6}>{t('名称：')} {name}</Col>
 
 ```
 
-### Options
-
-If there are any options, describe them here. Otherwise, delete this section.
-
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
 ## Further Reading
 
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+This rule can only check functions with name `t`. So PLEASE DO NOT RENAME THE T FUNCTION WHEN YOU IMPORT IT.

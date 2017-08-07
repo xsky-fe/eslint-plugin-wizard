@@ -1,17 +1,32 @@
-# should not connect unused state/dispatcher to props with filterSelector/filterDispatcher (no-unused-props)
+# Should not connect unused state/dispatcher to props with filterSelector/filterDispatcher (no-unused-props)
 
-Please describe the origin of the rule here.
-
+Sometimes we filter unexpected selector/dispatcher and caused unused props.
+This may cause unnecessary render.
 
 ## Rule Details
 
-This rule aims to...
+This rule aims to check whether all the selectors/dispatchers are working correctly.
 
 Examples of **incorrect** code for this rule:
 
 ```js
 
-// fill me in
+const connector = connect(
+  filterSelectors('disf'),
+  filterDispatchers(
+    'patchClientGroups',
+    'postClientGroups',
+    'setNotification',
+  ),
+);
+class ClientGroupFormContainer extends React.Component {
+  render() {
+    const { mode, staticClientGroup, setNotification, callback } = this.props;
+    this.props.patchClientGroups(staticClientGroup.id);
+    return null;
+  }
+};
+export default connector(ClientGroupFormContainer);
 
 ```
 
@@ -19,18 +34,24 @@ Examples of **correct** code for this rule:
 
 ```js
 
-// fill me in
+const connector = connect(
+  null,
+  filterDispatchers(
+    'patchClientGroups',
+    'setNotification',
+  ),
+);
+class ClientGroupFormContainer extends React.Component {
+  render() {
+    const { mode, staticClientGroup, setNotification, callback } = this.props;
+    this.props.patchClientGroups(staticClientGroup.id);
+    return null;
+  }
+};
+export default connector(ClientGroupFormContainer);
 
 ```
 
-### Options
-
-If there are any options, describe them here. Otherwise, delete this section.
-
 ## When Not To Use It
 
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+In some special situations we need to connect selectors/dispatchers and pass its to child components. If we intended to do this, we can disable this rule because we are confident with this use.

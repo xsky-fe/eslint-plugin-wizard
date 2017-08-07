@@ -36,14 +36,16 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "wizard/rule-name": 2
+        "wizard/use-t-function": "warn",
+        "wizard/no-unused-props": "warn"
     }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
+* use-t-function
+* no-unused-props
 
 
 
