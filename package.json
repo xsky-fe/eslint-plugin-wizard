@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-wizard",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "eslint rules for wizard project",
   "keywords": [
     "eslint",
