@@ -115,6 +115,28 @@ function UsersBar(props) {
   )
 }
       `
+    },
+    {
+      code: `
+ const connector = connect(
+  filterSelectors('license'),
+);
+
+class Dashboard extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    const { license } = nextProps;
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    const { license } = nextProps;
+  }
+  componentWillUpdate(nextProps, nextState) {
+    const { license } = nextProps;
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const { license } = prevProps;
+  }
+};
+      `
     }
   ],
 
