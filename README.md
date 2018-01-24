@@ -37,7 +37,8 @@ Then configure the rules you want to use under the rules section.
 {
     "rules": {
         "wizard/use-t-function": "warn",
-        "wizard/no-unused-props": "warn"
+        "wizard/no-unused-props": "warn",
+        "wizard/nightwatch-execute": "error"
     }
 }
 ```
@@ -46,6 +47,7 @@ Then configure the rules you want to use under the rules section.
 
 * use-t-function
 * no-unused-props
+* nightwatch-execute
 
 
 
