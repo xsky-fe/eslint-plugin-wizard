@@ -5,7 +5,7 @@ When using nightwatch's execute/executeAsync api, we will pass a function to the
 
 ## Rule Details
 
-This rule aims make sure no undeclared variables are used in execute/executeAsync scope.
+This rule aims to make sure no undeclared variables were used in execute/executeAsync scope.
 
 Examples of **incorrect** code for this rule:
 
@@ -40,15 +40,3 @@ this.demoTest = function (browser) {
 };
 
 ```
-
-### Options
-
-If there are any options, describe them here. Otherwise, delete this section.
-
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
