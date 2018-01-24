@@ -10,7 +10,8 @@
   "author": "yanzhen",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha tests --recursive"
+    "test": "mocha tests --recursive",
+    "mocha": "mocha"
   },
   "files": [
     "LICENSE",
