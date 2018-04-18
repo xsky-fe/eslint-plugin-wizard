@@ -24,22 +24,20 @@ Add `wizard` to the plugins section of your `.eslintrc` configuration file. You 
 
 ```json
 {
-    "plugins": [
-        "wizard"
-    ]
+  "plugins": ["wizard"]
 }
 ```
-
 
 Then configure the rules you want to use under the rules section.
 
 ```json
 {
-    "rules": {
-        "wizard/use-t-function": "warn",
-        "wizard/no-unused-props": "warn",
-        "wizard/nightwatch-execute": "error"
-    }
+  "rules": {
+    "wizard/use-t-function": "warn",
+    "wizard/no-unused-props": "warn",
+    "wizard/nightwatch-execute": "error",
+    "wizard/action-checker": "warn"
+  }
 }
 ```
 
@@ -48,8 +46,4 @@ Then configure the rules you want to use under the rules section.
 * use-t-function
 * no-unused-props
 * nightwatch-execute
-
-
-
-
-
+* action-checker
