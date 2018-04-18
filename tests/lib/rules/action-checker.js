@@ -73,12 +73,70 @@ checker.addRule('ruleC', {
   ],
 
   invalid: [
-    // {
-    //     code: "",
-    //     errors: [{
-    //         message: "Fill me in.",
-    //         type: "Me too"
-    //     }]
-    // }
+    {
+      code: `
+// [action-checker]
+
+        `,
+      errors: [
+        {
+          message:
+            'Action checker marker comments must be followed by checker expression.',
+          type: 'Line',
+        },
+      ],
+    },
+    {
+      code: `
+// [action-checker]
+const checker = new Checker({
+  rules: {
+    ruleA: {
+      fn(item) {
+        return Boolean(item.a);
+      },
+      msg: 'ruleA was not passed',
+      nMsg: 'ruleA was passed',
+    },
+    ruleB: {
+      fn(item) {
+        return Boolean(item.b);
+      },
+      msg: 'ruleB was not passed',
+      nMsg: 'ruleB was passed',
+    },
+  },
+  actions: {
+    actionA: {
+      rules: ['ruleA'],
+    }
+  }
+});
+
+checker
+  .addAction('actionC', { rules: ['ruleC'] });
+checker.addRule('ruleD', {
+  fn(item) {
+    return Boolean(item.d);
+  },
+  msg: 'ruleD was not passed',
+  nMsg: 'ruleD was passed',
+});
+      `,
+      errors: [
+        {
+          message: "Rule 'ruleB' was defined but not used.",
+          type: 'Property',
+        },
+        {
+          message: "Rule 'ruleC' was not defined in the checker.",
+          type: 'Literal',
+        },
+        {
+          message: "Rule 'ruleD' was defined but not used.",
+          type: 'Literal',
+        },
+      ],
+    },
   ],
 });
