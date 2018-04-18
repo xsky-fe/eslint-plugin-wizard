@@ -50,7 +50,24 @@ const checker = new Checker({
       rules: ['ruleA', 'ruleB'],
     }
   }
-})
+});
+
+checker
+  .addAction('actionC', { rules: ['ruleC'] })
+  .addAction('actionD', { rules: ['ruleD'] });
+checker.addRule('ruleC', {
+  fn(item) {
+    return Boolean(item.c);
+  },
+  msg: 'ruleC was not passed',
+  nMsg: 'ruleC was passed',
+}).addRule('ruleD', {
+  fn(item) {
+    return Boolean(item.d);
+  },
+  msg: 'ruleD was not passed',
+  nMsg: 'ruleD was passed',
+});
       `,
     },
   ],
