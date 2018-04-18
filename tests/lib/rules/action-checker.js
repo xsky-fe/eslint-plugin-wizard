@@ -94,6 +94,35 @@ const checker = new Checker({
 });
       `,
     },
+    {
+      code: `
+// [action-checker]
+const checker = new Checker({
+  rules: {
+    ruleA: {
+      fn(item) {
+        return Boolean(item.a);
+      },
+      msg: 'ruleA was not passed',
+      nMsg: 'ruleA was passed',
+    },
+    ruleB: {
+      fn(item) {
+        return Boolean(item.a);
+      },
+      msg: 'ruleA was not passed',
+      nMsg: 'ruleA was passed',
+      required: ['!ruleA'],
+    },
+  },
+  actions: {
+    actionA: {
+      rules: ['ruleB'],
+    },
+  }
+});
+      `,
+    },
   ],
 
   invalid: [
