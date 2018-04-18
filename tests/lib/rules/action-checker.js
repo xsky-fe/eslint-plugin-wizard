@@ -123,6 +123,12 @@ const checker = new Checker({
 });
       `,
     },
+    {
+      code: `
+// [action-checker]
+const c = new Checker({});
+        `,
+    },
   ],
 
   invalid: [
@@ -188,6 +194,35 @@ checker.addRule('ruleD', {
         {
           message: "Rule 'ruleD' was defined but not used.",
           type: 'Literal',
+        },
+      ],
+    },
+    {
+      code: `
+// [action-checker]
+const checker = new Checker({
+  rules: {
+    ruleA: {},
+  },
+  actions: {
+    actionA: {
+      rules: ['ruleA'],
+    }
+  }
+});
+        `,
+      errors: [
+        {
+          message: "'fn' was required in a rule.",
+          type: 'ObjectExpression',
+        },
+        {
+          message: "'msg' was required in a rule.",
+          type: 'ObjectExpression',
+        },
+        {
+          message: "'nMsg' was required in a rule.",
+          type: 'ObjectExpression',
         },
       ],
     },
