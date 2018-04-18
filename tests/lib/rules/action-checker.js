@@ -70,6 +70,30 @@ checker.addRule('ruleC', {
 });
       `,
     },
+    {
+      code: `
+// [action-checker]
+const checker = new Checker({
+  rules: {
+    ruleA: {
+      fn(item) {
+        return Boolean(item.a);
+      },
+      msg: 'ruleA was not passed',
+      nMsg: 'ruleA was passed',
+    },
+  },
+  actions: {
+    actionA: {
+      rules: ['!ruleA'],
+    },
+    actionB: {
+      rules: ['ruleA'],
+    }
+  }
+});
+      `,
+    },
   ],
 
   invalid: [
