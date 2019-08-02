@@ -73,7 +73,16 @@ ruleTester.run('use-t-function', rule, {
           type: 'Literal'
         }
       ],
-    }
+    },
+    {
+      code: 't(`use back quote`)',
+      errors: [
+        {
+          message: 't use template string, use quote instead.',
+          type: 'CallExpression'
+        }
+      ],
+    },
   ],
 
 });
